@@ -46,17 +46,31 @@ sys.stderr = sl
 rosip = config["mikrotik"]["ip"]
 rosusn = config["mikrotik"]["username"]
 rossec = config["mikrotik"]["password"]
-connection = routeros_api.RouterOsApiPool(rosip, username=rosusn, password=rossec, use_ssl=True)
+connection = routeros_api.RouterOsApiPool(
+   rosip, 
+   username=rosusn, 
+   password=rossec, 
+   plaintext_login=True
+)
 api = connection.get_api()
 
-def ros_usb_reset(api):
+def ros_usb_reset():
     api.get_resource('/system/routerboard/usb/').call('power-reset')
     return 'USB Interface Reset'
 
 app = Flask(__name__)
 @app.route('/usb-reset')
-def get_reset():
-    ros_usb_reset()
+def pwr_reset():
+    usb_pwr=ros_usb_reset()
+    return "USB Power Reset"
+
+@app.route('/usb-off')
+def pwr_off():
+    return "USB Powered Off"
+
+@app.route('/usb-status')
+def pwr_status():
+    return "runnning/n"
  
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5025, debug=True)
