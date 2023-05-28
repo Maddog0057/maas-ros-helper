@@ -1,9 +1,9 @@
 {
   "mikrotik":{
-    "name":"hapAC2"
+    "name":"hapAC2",
     "ip":"127.0.0.1",
     "username":"root"
-    "password":"P@SSW0RD"
+    "password":"P@SSW0RD",
   },
   "system":{
         "log":"</path/to/log/directory>"

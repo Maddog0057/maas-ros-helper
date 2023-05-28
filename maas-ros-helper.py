@@ -1,6 +1,7 @@
 from flask import Flask,request,json
 import routeros_api
 import logging
+import sys
 from logging.handlers import RotatingFileHandler
 
 with open("config.json", 'r') as json_data_file:
@@ -58,4 +59,4 @@ def get_reset():
     ros_usb_reset()
  
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
