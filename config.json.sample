@@ -7,7 +7,7 @@
   },
   "system":{
         "log":"./logs/"
-        "cert":"/path/to/server/cert/"
+        "cert":"/path/to/server/cert/",
         "key":"/path/to/server/key/"
   }
 }

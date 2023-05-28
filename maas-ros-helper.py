@@ -74,7 +74,7 @@ def pwr_reset():
 def pwr_off():
     return "{'status':'stopped'}"
 
-@app.route('/usb-status' methods=["POST", "GET"])
+@app.route('/usb-status', methods=["POST", "GET"])
 def pwr_status():
     return "{'status':'runninng'}"
  
