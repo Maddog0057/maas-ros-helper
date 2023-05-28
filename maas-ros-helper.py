@@ -70,7 +70,7 @@ def pwr_off():
 
 @app.route('/usb-status')
 def pwr_status():
-    return "runnning/n"
+    return "runnning"
  
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5025, debug=True)
