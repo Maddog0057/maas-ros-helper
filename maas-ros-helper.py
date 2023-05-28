@@ -77,6 +77,12 @@ def pwr_reset():
 @app.route('/usb-off', methods=["POST", "GET"])
 def pwr_off():
     global pstat
+    pstat = "stopped"
+    return pstat
+
+@app.route('/usb-on', methods=["POST", "GET"])
+def pwr_on():
+    global pstat
     pstat = "running"
     return pstat
 
