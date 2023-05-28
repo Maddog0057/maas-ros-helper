@@ -49,7 +49,10 @@ rossec = config["mikrotik"]["password"]
 connection = routeros_api.RouterOsApiPool(
    rosip, 
    username=rosusn, 
-   password=rossec, 
+   password=rossec,
+   use_ssl=True,
+   ssl_verify=False,
+   ssl_verify_hostname=False,
    plaintext_login=True
 )
 api = connection.get_api()
