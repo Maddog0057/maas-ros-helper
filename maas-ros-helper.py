@@ -1,4 +1,5 @@
 from flask import Flask,request,json
+import jsonify
 import routeros_api
 import logging
 import sys
@@ -42,7 +43,7 @@ stderr_logger = logging.getLogger('STDERR')
 sl = StreamToLogger(stderr_logger, logging.ERROR)
 sys.stderr = sl
 
-
+status = "running"
 rosip = config["mikrotik"]["ip"]
 rosusn = config["mikrotik"]["username"]
 rossec = config["mikrotik"]["password"]
@@ -68,15 +69,18 @@ app = Flask(__name__)
 @app.route('/usb-reset', methods=["POST", "GET"])
 def pwr_reset():
     usb_pwr=ros_usb_reset()
-    return "{'status':'runninng'}"
+    status = "running"
+    return status
 
 @app.route('/usb-off', methods=["POST", "GET"])
 def pwr_off():
-    return "{'status':'stopped'}"
+    status = "stopped"
+    return status
 
 @app.route('/usb-status', methods=["POST", "GET"])
 def pwr_status():
-    return "{'status':'runninng'}"
+    sdict = {"status":status}
+    return jsoify(sdict)
  
 if __name__ == '__main__':
     context = (maascert, maaskey)
