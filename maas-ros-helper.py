@@ -44,7 +44,7 @@ sl = StreamToLogger(stderr_logger, logging.ERROR)
 sys.stderr = sl
 
 global pstat
-pstat = str()
+pstat = "running"
 rosip = config["mikrotik"]["ip"]
 rosusn = config["mikrotik"]["username"]
 rossec = config["mikrotik"]["password"]
