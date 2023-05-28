@@ -44,7 +44,7 @@ sl = StreamToLogger(stderr_logger, logging.ERROR)
 sys.stderr = sl
 
 global pstat
-pstat = "running"
+pstat = str()
 rosip = config["mikrotik"]["ip"]
 rosusn = config["mikrotik"]["username"]
 rossec = config["mikrotik"]["password"]
@@ -82,6 +82,8 @@ def pwr_off():
 
 @app.route('/usb-status', methods=["POST", "GET"])
 def pwr_status():
+    if pstat is "":
+        pstat = "running"
     pwr_stat = {"status":pstat}
     return pwr_stat
  
