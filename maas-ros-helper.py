@@ -53,8 +53,8 @@ connection = routeros_api.RouterOsApiPool(
    rosip, 
    username=rosusn, 
    password=rossec,
-   port=8729,
-   use_ssl=True,
+   port=8728,
+   use_ssl=False,
    ssl_verify=False,
    ssl_verify_hostname=False,
    plaintext_login=True
