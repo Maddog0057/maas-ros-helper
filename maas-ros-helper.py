@@ -46,6 +46,8 @@ sys.stderr = sl
 rosip = config["mikrotik"]["ip"]
 rosusn = config["mikrotik"]["username"]
 rossec = config["mikrotik"]["password"]
+maascert = config["system"]["cert"]
+maaskey = config["system"]["key"]
 connection = routeros_api.RouterOsApiPool(
    rosip, 
    username=rosusn, 
@@ -77,4 +79,6 @@ def pwr_status():
     return "{'status':'runninng'}"
  
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=6437, debug=True)
+    context = (maascert, maaskey)
+    app.run(host='0.0.0.0', port=6437, debug=True, ssl_context=context)
+
