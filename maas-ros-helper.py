@@ -43,7 +43,8 @@ stderr_logger = logging.getLogger('STDERR')
 sl = StreamToLogger(stderr_logger, logging.ERROR)
 sys.stderr = sl
 
-status = "running"
+global pstat
+pstat = str()
 rosip = config["mikrotik"]["ip"]
 rosusn = config["mikrotik"]["username"]
 rossec = config["mikrotik"]["password"]
@@ -69,18 +70,20 @@ app = Flask(__name__)
 @app.route('/usb-reset', methods=["POST", "GET"])
 def pwr_reset():
     usb_pwr=ros_usb_reset()
-    status = "running"
-    return status
+    global pstat
+    pstat = "running"
+    return pstat
 
 @app.route('/usb-off', methods=["POST", "GET"])
 def pwr_off():
-    status = "stopped"
-    return status
+    global pstat
+    pstat = "running"
+    return pstat
 
 @app.route('/usb-status', methods=["POST", "GET"])
 def pwr_status():
-    sdict = {"status":status}
-    return jsonify(sdict)
+    pwr_stat = {"status":pstat}
+    return pwr_stat
  
 if __name__ == '__main__':
     context = (maascert, maaskey)
