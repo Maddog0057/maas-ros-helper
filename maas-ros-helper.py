@@ -62,15 +62,15 @@ app = Flask(__name__)
 @app.route('/usb-reset')
 def pwr_reset():
     usb_pwr=ros_usb_reset()
-    return "USB Power Reset"
+    return "ok"
 
 @app.route('/usb-off')
 def pwr_off():
-    return "USB Powered Off"
+    return "stopped"
 
 @app.route('/usb-status')
 def pwr_status():
     return "runnning"
  
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5025, debug=True)
+    app.run(host='0.0.0.0', port=6437, debug=True)
