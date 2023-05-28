@@ -80,7 +80,7 @@ def pwr_off():
 @app.route('/usb-status', methods=["POST", "GET"])
 def pwr_status():
     sdict = {"status":status}
-    return jsoify(sdict)
+    return jsonify(sdict)
  
 if __name__ == '__main__':
     context = (maascert, maaskey)
