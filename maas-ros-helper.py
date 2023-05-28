@@ -82,8 +82,9 @@ def pwr_off():
 
 @app.route('/usb-status', methods=["POST", "GET"])
 def pwr_status():
+    global pstat
     if pstat is "":
-        pstat = "running"
+       pstat = "running"
     pwr_stat = {"status":pstat}
     return pwr_stat
  
